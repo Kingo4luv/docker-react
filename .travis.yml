@@ -1,6 +1,7 @@
 sudo: required
-
 language: node_js
+node_js:
+  - 10
 
 services:
   - docker
@@ -13,9 +14,6 @@ before_install:
 
 deploy:
   provider: elasticbeanstalk
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
   region: "us-east-2"
   app: "Docker-react"
   env: "DockerReact-env"
@@ -23,3 +21,6 @@ deploy:
   bucket_path: "Docker-react"
   on:
     branch: master
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
